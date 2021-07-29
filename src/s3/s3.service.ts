@@ -1,6 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable} from '@nestjs/common';
 import * as AWS from "aws-sdk";
-import path = require("path");
 
 @Injectable()
 export class S3Service {
@@ -8,9 +7,10 @@ export class S3Service {
         return new AWS.S3();
     };
 
-    async fileUploadToS3(file): Promise<string> {
+    async fileUploadToS3(file: any): Promise<string> {
+        console.log(file);
         const params = {
-            Bucket: process.env.AWS_S3_BUCKET_NAME,
+            Bucket: process.env.S3_BUCKET,
             Key: `${file.originalname}`,
             Body: file.buffer
         };
