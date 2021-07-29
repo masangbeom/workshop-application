@@ -1,8 +1,27 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
+import * as bodyParser from 'body-parser';
+import {NestExpressApplication} from "@nestjs/platform-express";
+global['fetch'] = require('node-fetch');
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    bodyParser: true,
+    cors: true,
+  });
+  app.use(bodyParser.text());
+  app.use(bodyParser.json());
+  app.use(bodyParser.raw());
+  const appOptions = new DocumentBuilder()
+      .setTitle('Octank API')
+      .setDescription('')
+      .setVersion('1.0')
+      .addBearerAuth()
+      .build();
+  const appDocument = SwaggerModule.createDocument(app, appOptions);
+  SwaggerModule.setup('api', app, appDocument);
+
   await app.listen(3000);
 }
 bootstrap();
