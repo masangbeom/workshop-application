@@ -14,7 +14,7 @@ async function bootstrap() {
   app.use(bodyParser.json());
   app.use(bodyParser.raw());
   const appOptions = new DocumentBuilder()
-      .setTitle('Octank API')
+      .setTitle('AWS One-stop Workshop API')
       .setDescription('')
       .setVersion('1.0')
       .addBearerAuth()
@@ -22,6 +22,6 @@ async function bootstrap() {
   const appDocument = SwaggerModule.createDocument(app, appOptions);
   SwaggerModule.setup('api', app, appDocument);
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT || '3000');
 }
 bootstrap();
