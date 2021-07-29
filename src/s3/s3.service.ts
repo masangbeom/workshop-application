@@ -8,16 +8,11 @@ export class S3Service {
         return new AWS.S3();
     };
 
-    async uploadFile(file: any) {
-        const ext = path.extname(file.originalname);
-        return this.fileUploadToS3(file.buffer, file.filename, ext);
-    }
-
-    async fileUploadToS3(buffer: Buffer, filename: string, ext: string) {
+    async fileUploadToS3(file): Promise<string> {
         const params = {
             Bucket: process.env.AWS_S3_BUCKET_NAME,
-            Key: `${filename}${ext}`,
-            Body: buffer
+            Key: `${file.originalname}`,
+            Body: file.buffer
         };
         return new Promise((resolve, reject) => {
             const putObjectInS3 = this.s3Bucket.upload(params).promise();

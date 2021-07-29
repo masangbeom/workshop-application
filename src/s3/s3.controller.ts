@@ -21,7 +21,7 @@ export class S3Controller {
         description: 'Success File Upload',
     })
     async uploadFile(@Res() res, @UploadedFile() file) {
-        const result = await this.s3Service.uploadFile(file);
+        const result = await this.s3Service.fileUploadToS3(file);
         return res.status(HttpStatus.OK).json(result);
     }
 }
