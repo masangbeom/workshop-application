@@ -1,7 +1,7 @@
 import {Controller, Get, HttpStatus, Post, Res} from '@nestjs/common';
 import {ApiOperation, ApiResponse, ApiTags} from "@nestjs/swagger";
 import {RdsService} from "./rds.service";
-import {SampleDto} from "../sample.dto";
+import {SampleDto} from "../dto/sample.dto";
 
 @ApiTags('Database')
 @Controller()

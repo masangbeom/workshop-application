@@ -1,5 +1,5 @@
 import {Injectable} from '@nestjs/common';
-import {SampleDto} from "../sample.dto";
+import {SampleDto} from "../dto/sample.dto";
 import {Sample} from "../entities/sample.entity";
 import {animals, colors, uniqueNamesGenerator} from "unique-names-generator";
 import {InjectRepository} from "@nestjs/typeorm";

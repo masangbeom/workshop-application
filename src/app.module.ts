@@ -5,6 +5,7 @@ import {TypeOrmModule} from "@nestjs/typeorm";
 import {TypeOrmConfigService} from "./typeorm.service";
 import {RdsModule} from './rds/rds.module';
 import {ConfigModule} from "@nestjs/config";
+import { S3Module } from './s3/s3.module';
 
 // If you have set RDS, change it to "true"
 const rdsConnection = true;
@@ -16,8 +17,10 @@ const rdsConnection = true;
             useClass: TypeOrmConfigService
         }),
         RdsModule,
+        S3Module,
     ] : [
-        ConfigModule.forRoot({isGlobal: true})
+        ConfigModule.forRoot({isGlobal: true}),
+        S3Module,
     ],
     controllers: [AppController],
     providers: [AppService],
