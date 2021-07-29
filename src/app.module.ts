@@ -8,7 +8,7 @@ import {ConfigModule} from "@nestjs/config";
 import { S3Module } from './s3/s3.module';
 
 // If you have set RDS, change it to "true"
-const rdsConnection = true;
+const rdsConnection = false;
 
 @Module({
     imports: rdsConnection ? [

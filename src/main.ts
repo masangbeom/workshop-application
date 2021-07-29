@@ -14,7 +14,7 @@ async function bootstrap() {
   app.use(bodyParser.raw());
   const appOptions = new DocumentBuilder()
       .setTitle('AWS One-stop Workshop API')
-      .setDescription('')
+      .setDescription('for Test(RDS, S3)')
       .setVersion('1.0')
       .addBearerAuth()
       .build();
@@ -23,4 +23,5 @@ async function bootstrap() {
 
   await app.listen(process.env.PORT || '3000');
 }
+
 bootstrap();
