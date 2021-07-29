@@ -18,7 +18,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
             database: process.env.DATABASE_NAME,
             password,
             entities: [process.env.PWD + '/dist/**/*.entity{.ts,.js}'],
-            synchronize: Boolean(process.env.TYPEORM_SYNCHRONIZE),
+            synchronize: true,
         };
     }
 

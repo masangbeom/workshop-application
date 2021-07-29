@@ -3,7 +3,6 @@ import { AppModule } from './app.module';
 import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
 import * as bodyParser from 'body-parser';
 import {NestExpressApplication} from "@nestjs/platform-express";
-global['fetch'] = require('node-fetch');
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
